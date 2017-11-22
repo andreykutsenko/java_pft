@@ -1,9 +1,12 @@
 .gradle
-/build/
-.DS_Store
+build/
+out
 .idea
-/.gitignore
+gradle
 
+gradlew
+gradlew.bat
+.DS_Store
 
 # Ignore Gradle GUI config
 gradle-app.setting
