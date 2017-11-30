@@ -1,40 +1,37 @@
 package ru.stqa.pft.sandbox;
 
-import java.util.Random;
-
 public class MainDistance {
 
   public static void main(String[] args) {
 
-//    int[] p1 = new int[2];
-//    int[] p2 = new int[2];
-//    Random random = new Random();
-//
-//    //устанавливаем координаты точки №1
-//    p1[0] = random.nextInt(10);
-//    p1[1] = random.nextInt(10);
-//
-//    //устанавливаем координаты точки №2
-//    p2[0] = random.nextInt(10);
-//    p2[1] = random.nextInt(10);
-//
-//    System.out.println("Расстояние между точками: " + distance(p1,p2));
-//    System.out.println("- координаты точки №1 (x1,y1): (" + p1[0] + "," + p1[1] + ")");
-//    System.out.println("- координаты точки №2 (x2,y2): (" + p2[0] + "," + p2[1] + ")");
+    // Создание первого объекта Point с начальными координатами точки (0;0)
+    Point p1 = new Point(0, 0);
+    // Задание новых координат точки с клавиатуры
+    p1.inputPoint("первой");
+    // Вывод координаты точки на экран:
+    p1.printPoint();
 
-    Point p = new Point();
+    // Создание второго объекта Point с начальными координатами точки (0;0)
+    Point p2 = new Point(0, 0);
+    // Задание новых координат точки с клавиатуры
+    p2.inputPoint("второй");
+    // Вывод координаты точки на экран:
+    p2.printPoint();
 
-    System.out.println("Расстояние между точками: " + p.distance());
-    System.out.println("- координаты точки №1 (x1,y1): (" + p.p1[0] + "," + p.p1[1] + ")");
-    System.out.println("- координаты точки №2 (x2,y2): (" + p.p2[0] + "," + p.p2[1] + ")");
-
+    //Вызов функции
+//    System.out.println("Расстояние между точками: " + distance(p1, p2));
+    //Вызов метода
+    System.out.println("Расстояние между точками: " + p1.distance(p2));
   }
 
-  public static double distance(int[] p1,int[] p2) {
-    return Math.sqrt((p2[0] - p1[0]) * (p2[0] - p1[0]) + (p2[1] - p1[1]) * (p2[1] - p1[1]));
+  // Функция расчета расстояния между двумя точками
+  public static double distance(Point p1, Point p2) {
+    return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
   }
+
 
 }
+
 
 
 

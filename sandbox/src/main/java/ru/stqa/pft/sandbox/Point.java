@@ -1,33 +1,37 @@
 package ru.stqa.pft.sandbox;
 
-import java.util.Random;
+import java.util.Scanner;
 
 public class Point {
 
-  int[] p1 = new int[2];
-  int[] p2 = new int[2];
-  Random random = new Random();
+  public double x;
+  public double y;
 
-//  public Point(int[] p1, int[] p2) {
-//    this.p1 = p1;
-//    this.p2 = p2;
-//  }
+  // Вывод координаты точки на экран:
+  public void printPoint() {
+    System.out.print("Координаты точки: ");
+    System.out.println("(" + x + ";" + y + ")");
+    System.out.println();
+  }
 
-  public double distance() {
+  // Задание новых координат точки с клавиатуры
+  public void inputPoint(String s) {
+    System.out.println("Задайте координаты " + s + " точки: ");
+    Scanner inp = new Scanner(System.in);
+    System.out.print("Введите значение X: ");
+    x = inp.nextDouble();
+    System.out.print("Введите значение Y: ");
+    y = inp.nextDouble();
+  }
 
-    //устанавливаем координаты точки №1
-//    p1[0] = random.nextInt(10);
-//    p1[1] = random.nextInt(10);
-    p1[0] = 0;
-    p1[1] = 1;
+  // Метод расчета расстояния между двумя точками
+  public double distance(Point p2) {
+    return Math.sqrt((p2.x - x) * (p2.x - x) + (p2.y - y) * (p2.y - y));
+  }
 
-    //устанавливаем координаты точки №2
-//    p2[0] = random.nextInt(10);
-//    p2[1] = random.nextInt(10);
-    p2[0] = 0;
-    p2[1] = 6;
-
-    return Math.sqrt((p2[0] - p1[0]) * (p2[0] - p1[0]) + (p2[1] - p1[1]) * (p2[1] - p1[1]));
+  public Point(double x, double y) {
+    this.x = x;
+    this.y = y;
   }
 
 }
