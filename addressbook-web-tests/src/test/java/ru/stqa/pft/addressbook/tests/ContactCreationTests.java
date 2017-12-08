@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactCreationTests {
+public class ContactCreationTests extends TestBase {
   FirefoxDriver wd;
 
   @BeforeMethod

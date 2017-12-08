@@ -4,6 +4,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ApplicationManager {
   FirefoxDriver wd;
@@ -13,6 +15,9 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
 
   public void init() {
+    // remove "ERROR" INFO: Detected dialect: OSS
+    Logger.getLogger("org.openqa.selenium.remote").setLevel(Level.OFF);
+
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/index.php");
