@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -23,10 +24,14 @@ public class HelperBase {
 
   public boolean isAlertPresent() {
     try {
-      wd.switchTo().alert();
+      getAlert();
       return true;
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  protected Alert getAlert() {
+    return wd.switchTo().alert();
   }
 }
