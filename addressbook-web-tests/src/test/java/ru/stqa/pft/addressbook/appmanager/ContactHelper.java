@@ -32,14 +32,6 @@ public class ContactHelper extends HelperBase {
     type(By.name("homepage"), contactData.getHomepage());
   }
 
-  public void submitContactCreation() {
-    click(By.name("submit"));
-  }
-
-  public void selectContact() {
-    click(By.name("selected[]"));
-  }
-
   public void deleteSelectedContact() {
     click(By.xpath("//input[@value='Delete']"));
     getAlert().accept();
@@ -47,6 +39,10 @@ public class ContactHelper extends HelperBase {
 
   public void returnToContactPage() {
     click(By.id("content"));
+  }
+
+  public void initContactModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
 }

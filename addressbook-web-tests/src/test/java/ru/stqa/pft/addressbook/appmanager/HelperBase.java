@@ -34,4 +34,17 @@ public class HelperBase {
   protected Alert getAlert() {
     return wd.switchTo().alert();
   }
+
+  public void submitModification() {
+    click(By.name("update"));
+  }
+
+  public void submitCreation() {
+    click(By.name("submit"));
+  }
+
+  public void selectRecord() {
+    click(By.name("selected[]"));
+  }
+
 }

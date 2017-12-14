@@ -94,4 +94,5 @@ public class ContactData {
   public String getHomepage() {
     return homepage;
   }
+
 }
