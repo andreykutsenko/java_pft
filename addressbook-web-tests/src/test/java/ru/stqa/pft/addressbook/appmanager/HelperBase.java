@@ -1,9 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HelperBase {
@@ -53,4 +50,13 @@ public class HelperBase {
     click(By.name("selected[]"));
   }
 
+  protected boolean isElementPresent(By locator) {
+    try {
+      wd.findElement(By.name("new_group"));
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+
+  }
 }
