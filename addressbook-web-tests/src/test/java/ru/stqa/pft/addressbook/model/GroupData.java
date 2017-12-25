@@ -11,7 +11,7 @@ public class GroupData {
     this.footer = footer;
   }
 
-    public String getName() {
+  public String getName() {
     return name;
   }
 
