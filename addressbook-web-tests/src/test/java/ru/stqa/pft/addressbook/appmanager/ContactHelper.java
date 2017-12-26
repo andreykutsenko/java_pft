@@ -35,7 +35,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("homepage"), contactData.getHomepage());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      try {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      } catch (NoSuchElementException ex) {
+        return;
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -52,6 +56,14 @@ public class ContactHelper extends HelperBase {
 
   public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitCreation();
+//    returnToContactPage();
+    gotoHomePage();
   }
 
 }

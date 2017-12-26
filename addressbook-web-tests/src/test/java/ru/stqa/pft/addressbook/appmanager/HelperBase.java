@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HelperBase {
   protected WebDriver wd;
@@ -58,5 +57,16 @@ public class HelperBase {
       return false;
     }
 
+  }
+
+  public boolean isThereARecord() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void gotoHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
   }
 }
