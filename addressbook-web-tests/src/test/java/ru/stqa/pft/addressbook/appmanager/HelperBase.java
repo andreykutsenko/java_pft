@@ -45,8 +45,9 @@ public class HelperBase {
     click(By.name("submit"));
   }
 
-  public void selectRecord() {
-    click(By.name("selected[]"));
+  public void selectRecord(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+//    click(By.name("selected[]"));
   }
 
   protected boolean isElementPresent(By locator) {
