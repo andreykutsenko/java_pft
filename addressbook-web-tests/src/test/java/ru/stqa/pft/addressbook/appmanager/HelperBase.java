@@ -45,8 +45,13 @@ public class HelperBase {
     click(By.name("submit"));
   }
 
-  public void selectRecord(int index) {
+  public void selectGroup(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
+//    click(By.name("selected[]"));
+  }
+
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 //    click(By.name("selected[]"));
   }
 
