@@ -45,14 +45,13 @@ public class HelperBase {
     click(By.name("submit"));
   }
 
-  public void selectGroup(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-//    click(By.name("selected[]"));
+
+  public void   selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
-  public void selectGroupById(int id) {
+  public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-//    click(By.name("selected[]"));
   }
 
   protected boolean isElementPresent(By locator) {
@@ -65,11 +64,7 @@ public class HelperBase {
 
   }
 
-  public boolean isThereARecord() {
-    return isElementPresent(By.name("selected[]"));
-  }
-
-  public void gotoHomePage() {
+  public void contactPage() {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }

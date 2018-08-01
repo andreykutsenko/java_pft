@@ -1,28 +1,33 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-
-import java.util.List;
+import ru.stqa.pft.addressbook.model.Contacts;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactDeletionTests extends TestBase {
 
-  @Test(enabled = false)
-  public void testContactDeletion() {
-    app.goTo().gotoHomePage();
-    if (! app.getContactHelper().isThereARecord()) {
-      app.getContactHelper().createContact(new ContactData("Name1", "Name2", "Name3", "Name4", "Title", "NameCompany", "AddressCompany", "HomePhone", "MobilePhone", "WorkPhone", "FaxPhone", "email@email.com", "email2@email.com", "email3@email.com", "homepage.com", "tt1"));
+  @BeforeMethod
+  public void insurePreconditions() {
+    app.goTo().contactPage();
+    if (app.contact().all().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstname("Name1").withMiddlename("Name2").withLastname("Name3").withNickname("Name4").withTitle("Title")
+              .withCompany("NameCompany").withAddress("AddressCompany").withHome("HomePhone").withMobile("MobilePhone")
+              .withWork("WorkPhone").withFax("FaxPhone").withEmail("email@email.com").withEmail2("email2@email.com")
+              .withEmail3("email3@email.com").withHomepage("homepage.com").withGroup("er123"));
     }
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectGroup(before.size() - 1);
-    app.getContactHelper().deleteSelectedContact();
-//    app.getContactHelper().returnToContactPage();
-    app.goTo().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
-    Assert.assertEquals(after.size(), before.size() - 1);
-    before.remove(before.size() - 1);
-    Assert.assertEquals(before, after);
+  }
+
+  @Test
+  public void testContactDeletion() {
+    Contacts before = app.contact().all();
+    ContactData deletedContact = before.iterator().next();
+    app.contact().delete(deletedContact);
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo(before.without(deletedContact)));
   }
 
 }
