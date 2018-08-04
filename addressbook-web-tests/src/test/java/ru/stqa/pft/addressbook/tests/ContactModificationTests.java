@@ -16,8 +16,8 @@ public class ContactModificationTests extends TestBase {
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData()
               .withFirstname("Name1").withMiddlename("Name2").withLastname("Name3").withNickname("Name4").withTitle("Title")
-              .withCompany("NameCompany").withAddress("AddressCompany").withHome("HomePhone").withMobile("MobilePhone")
-              .withWork("WorkPhone").withFax("FaxPhone").withEmail("email@email.com").withEmail2("email2@email.com")
+              .withCompany("NameCompany").withAddress("AddressCompany").withHomePhone("HomePhone").withMobilePhone("MobilePhone")
+              .withWorkPhone("WorkPhone").withFax("FaxPhone").withEmail1("email@email.com").withEmail2("email2@email.com")
               .withEmail3("email3@email.com").withHomepage("homepage.com").withGroup("er123"));
     }
   }
@@ -29,8 +29,8 @@ public class ContactModificationTests extends TestBase {
 
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withFirstname("Name1").withMiddlename("Name2").withLastname("Name3")
-            .withNickname("Name4").withTitle("Title").withCompany("NameCompany").withAddress("AddressCompany").withHome("HomePhone")
-            .withMobile("MobilePhone").withWork("WorkPhone").withFax("FaxPhone").withEmail("email@email.com")
+            .withNickname("Name4").withTitle("Title").withCompany("NameCompany").withAddress("AddressCompany").withHomePhone("HomePhone")
+            .withMobilePhone("MobilePhone").withWorkPhone("WorkPhone").withFax("FaxPhone").withEmail1("email@email.com")
             .withEmail2("email2@email.com").withEmail3("email3@email.com").withHomepage("homepage.com").withGroup("test1");
 
     app.contact().modify(contact);
