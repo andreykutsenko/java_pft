@@ -4,20 +4,23 @@
     "middlename": "MiddleName0",
     "lastname": "LastName0",
     "nickname": "NickName0",
-    "company": "CompanyName0"
+    "company": "CompanyName0",
+    "group": "Group0"
   },
   {
     "firstname": "FirstName1",
     "middlename": "MiddleName1",
     "lastname": "LastName1",
     "nickname": "NickName1",
-    "company": "CompanyName1"
+    "company": "CompanyName1",
+    "group": "Group1"
   },
   {
     "firstname": "FirstName2",
     "middlename": "MiddleName2",
     "lastname": "LastName2",
     "nickname": "NickName2",
-    "company": "CompanyName2"
+    "company": "CompanyName2",
+    "group": "Group2"
   }
 ]
