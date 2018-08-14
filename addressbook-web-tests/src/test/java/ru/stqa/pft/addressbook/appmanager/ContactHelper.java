@@ -44,7 +44,8 @@ public class ContactHelper extends HelperBase {
     if (creation) {
       try {
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-      } catch (NoSuchElementException ex) {
+//      } catch (NoSuchElementException ex) {
+      } catch (NullPointerException ex) {
         return;
       }
     } else {

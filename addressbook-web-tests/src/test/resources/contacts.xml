@@ -5,7 +5,6 @@
     <lastname>LastName0</lastname>
     <nickname>NickName0</nickname>
     <company>CompanyName0</company>
-    <group>Group0</group>
   </contact>
   <contact>
     <firstname>FirstName1</firstname>
@@ -13,14 +12,5 @@
     <lastname>LastName1</lastname>
     <nickname>NickName1</nickname>
     <company>CompanyName1</company>
-    <group>Group1</group>
-  </contact>
-  <contact>
-    <firstname>FirstName2</firstname>
-    <middlename>MiddleName2</middlename>
-    <lastname>LastName2</lastname>
-    <nickname>NickName2</nickname>
-    <company>CompanyName2</company>
-    <group>Group2</group>
   </contact>
 </list>
