@@ -6,11 +6,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.safari.SafariDriver;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ApplicationManager {
+  private final Properties properties;
   WebDriver wd;
 
   private NavigationHelper navigationHelper;
@@ -21,9 +28,13 @@ public class ApplicationManager {
 
   public ApplicationManager(String browser) {
     this.browser = browser;
+    properties = new Properties();
   }
 
-  public void init() {
+  public void init() throws IOException {
+    String target = System.getProperty("target", "local");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
     // remove "ERROR" INFO: Detected dialect: OSS
     Logger.getLogger("org.openqa.selenium.remote").setLevel(Level.OFF);
 
@@ -36,12 +47,12 @@ public class ApplicationManager {
     }
 
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook");
+    wd.get(properties.getProperty("web.baseUrl"));
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     contactHelper = new ContactHelper(wd);
-    sessionHelper.login("admin", "secret");
+    sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
 
   public void stop() {
