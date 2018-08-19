@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactEmailAddressTests extends TestBase{
+public class ContactEmailAddressTests extends TestBase {
 
   @Test
   public void testContactEmails() {
@@ -29,7 +29,7 @@ public class ContactEmailAddressTests extends TestBase{
             .collect(Collectors.joining("\n"));
   }
 
-  public  static String cleaned (String email) {
+  public static String cleaned(String email) {
     return email.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 }

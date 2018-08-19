@@ -24,6 +24,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private ContactHelper contactHelper;
   private String browser;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -36,6 +37,8 @@ public class ApplicationManager {
 
     // remove "ERROR" INFO: Detected dialect: OSS
     Logger.getLogger("org.openqa.selenium.remote").setLevel(Level.OFF);
+
+    dbHelper = new DbHelper();
 
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
@@ -68,6 +71,10 @@ public class ApplicationManager {
 
   public ContactHelper contact() {
     return contactHelper;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
   }
 
 }

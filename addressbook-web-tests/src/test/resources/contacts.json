@@ -4,13 +4,31 @@
     "middlename": "MiddleName0",
     "lastname": "LastName0",
     "nickname": "NickName0",
-    "company": "CompanyName0"
+    "company": "CompanyName0",
+    "address": "AddressCompany0",
+    "homephone": "HomePhone0",
+    "mobilephone": "MobilePhone0",
+    "workphone": "WorkPhone0",
+    "fax": "FaxPhone0",
+    "email1": "email@email0.com",
+    "email2": "email2@email0.com",
+    "email3": "email3@email0.com",
+    "homepage": "homepage0.com"
   },
   {
     "firstname": "FirstName1",
     "middlename": "MiddleName1",
     "lastname": "LastName1",
     "nickname": "NickName1",
-    "company": "CompanyName1"
+    "company": "CompanyName1",
+    "address": "AddressCompany1",
+    "homephone": "HomePhone1",
+    "mobilephone": "MobilePhone1",
+    "workphone": "WorkPhone1",
+    "fax": "FaxPhone1",
+    "email1": "email@email1.com",
+    "email2": "email2@email1.com",
+    "email3": "email3@email1.com",
+    "homepage": "homepage1.com"
   }
 ]

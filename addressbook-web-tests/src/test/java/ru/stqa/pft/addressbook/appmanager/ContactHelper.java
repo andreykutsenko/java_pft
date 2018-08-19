@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper (WebDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
@@ -44,7 +44,8 @@ public class ContactHelper extends HelperBase {
     if (creation) {
       try {
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-//      } catch (NoSuchElementException ex) {
+      } catch (NoSuchElementException ex) {
+        return;
       } catch (NullPointerException ex) {
         return;
       }
