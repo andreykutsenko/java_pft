@@ -207,6 +207,14 @@ public class ContactData {
     return this;
   }
 
+  public ContactData inGroup(GroupData group) {
+    if (groups == null) {
+      groups = new HashSet<>();
+    }
+    groups.add(group);
+    return this;
+  }
+
   public File getPhoto() {
     return photo;
   }
@@ -276,6 +284,9 @@ public class ContactData {
   }
 
   public Groups getGroups() {
+    if (groups == null) {
+      groups = new HashSet<>();
+    }
     return new Groups(groups);
   }
 
@@ -315,8 +326,4 @@ public class ContactData {
     return Objects.hash(id, firstname, middlename, lastname, nickname, company, address, homephone, mobilephone, workphone, fax, email1, email2, email3, homepage);
   }
 
-  public ContactData inGroup(GroupData group) {
-    groups.add(group);
-    return this;
-  }
 }

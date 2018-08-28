@@ -1,13 +1,13 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -66,6 +66,11 @@ public class ContactHelper extends HelperBase {
     getAlert().accept();
   }
 
+  public void addToGroupSelectedContact(GroupData group) {
+      new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
+    click(By.xpath("//input[@value='Add to']"));
+  }
+
   public void create(ContactData contact) {
     initContactCreation();
     fillContactForm(contact, true);
@@ -84,6 +89,27 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact, false);
     submitModification();
     contactPage();
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    addToGroupSelectedContact(group);
+    contactPage();
+  }
+
+  public void removeFromGroup(ContactData contact, GroupData group) {
+    scrollContactsByGroupFilter(group);
+    selectContactById(contact.getId());
+    removeSelectedContact();
+    contactPage();
+  }
+
+  public void scrollContactsByGroupFilter(GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(group.getId()));
+  }
+
+  public void removeSelectedContact() {
+    click(By.xpath("//input[@name='remove']"));
   }
 
   public Contacts all() {

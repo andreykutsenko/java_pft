@@ -59,7 +59,7 @@ public class HelperBase {
   }
 
   public void selectContactById(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
   }
 
   protected boolean isElementPresent(By locator) {
