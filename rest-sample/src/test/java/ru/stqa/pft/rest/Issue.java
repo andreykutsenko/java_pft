@@ -7,6 +7,7 @@ public class Issue {
   private int id;
   private String subject;
   private String description;
+  private int status;
 
   public int getId() {
     return id;
@@ -35,18 +36,38 @@ public class Issue {
     return this;
   }
 
+  public int getStatus() {
+    return status;
+  }
+
+  public Issue withStatus(int status) {
+    this.status = status;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Issue issue = (Issue) o;
     return id == issue.id &&
+            status == issue.status &&
             Objects.equals(subject, issue.subject) &&
             Objects.equals(description, issue.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, subject, description);
+    return Objects.hash(id, subject, description, status);
+  }
+
+  @Override
+  public String toString() {
+    return "Issue{" +
+            "id=" + id +
+            ", subject='" + subject + '\'' +
+            ", description='" + description + '\'' +
+            ", status=" + status +
+            '}';
   }
 }

@@ -20,32 +20,39 @@ public class RestAssuredTests {
 
   @BeforeClass
   public void init() {
-    RestAssured.authentication = RestAssured.basic("210ab85e8234e5eb182dfc09cf4f47c1", "");
+//    RestAssured.authentication = RestAssured.basic("210ab85e8234e5eb182dfc09cf4f47c1", "");
+    RestAssured.authentication = RestAssured.basic("288f44776e7bec4bf44fdfeb1e646490", "");
+
   }
 
   @Test
   public void testCreateIssue() throws IOException {
     Set<Issue> oldIssues = getIssues();
+    System.out.println(oldIssues.size());
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue"); //вызываем конструктор
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
+    System.out.println(newIssues.size());
     oldIssues.add(newIssue.withId(issueId));
     assertEquals(newIssues, oldIssues);
 
   }
 
   private Set<Issue> getIssues() throws IOException {
-    String json = RestAssured.get("http://demo.bugify.com/api/issues.json").asString();
+//    String json = RestAssured.get("http://demo.bugify.com/api/issues.json").asString();
+    String json = RestAssured.get("http://bugify.stqa.ru/api/issues.json").asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
-    return new Gson().fromJson(issues,new TypeToken<Set<Issue>>() {}.getType());
+    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
   }
 
   private int createIssue(Issue newIssue) throws IOException {
     String json = RestAssured.given()
             .parameter("subject", newIssue.getSubject())
             .parameter("description", newIssue.getDescription())
-            .post("http://demo.bugify.com/api/issues.json").asString();
+//            .post("http://demo.bugify.com/api/issues.json").asString();
+            .post("http://bugify.stqa.ru/api/issues.json").asString();
+
     JsonElement parsed = new JsonParser().parse(json);
     return parsed.getAsJsonObject().get("issue_id").getAsInt();
   }
