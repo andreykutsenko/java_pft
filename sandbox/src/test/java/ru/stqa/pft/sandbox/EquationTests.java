@@ -38,7 +38,7 @@ public class EquationTests {
   @Test
   public void testZero() {
     Equation e = new Equation(0, 0, 0);
-    Assert.assertEquals(e.rootNumber(), -1);
+    Assert.assertEquals(e.rootNumber(), 1);
   }
 
 }
