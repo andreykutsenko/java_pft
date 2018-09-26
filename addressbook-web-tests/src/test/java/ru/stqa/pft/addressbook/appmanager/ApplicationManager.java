@@ -47,8 +47,7 @@ public class ApplicationManager {
 
     if ("".equals(properties.getProperty("selenium.server"))) {
       if (browser.equals(BrowserType.FIREFOX)) {
-//        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-        wd = new FirefoxDriver();
+        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
       } else if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
       } else if (browser.equals(BrowserType.SAFARI)) {
